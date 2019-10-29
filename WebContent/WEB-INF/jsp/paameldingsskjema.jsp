@@ -11,12 +11,12 @@
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
 <!-- Egen css for infobox og hover -->
-<link rel = "stylesheet" type = "text/css" href = "${pageContext.request.contextPath}/infobox.css">
+<link rel = "stylesheet" type = "text/css" href = "infobox.css">
 <title>Påmelding</title>
 </head>
 <body>
 	<h2>Påmelding</h2>
-	<form method="post" class="pure-form pure-form-aligned">
+	<form method="post" class="pure-form pure-form-aligned" onsubmit="return confirmSubmit()">
 		<fieldset>
 			<div class="pure-control-group">
 				<label for="fornavn">Fornavn:</label> <input id="inputFornavn" type="text"
@@ -68,6 +68,6 @@
 	<p>
 		Har du allerede meldt deg på? <a href="LogginnServlet">Klikk her</a>.
 	</p>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/validering.js" defer></script>
+	<script type="text/javascript" src="validering.js" defer></script>
 </body>
 </html>

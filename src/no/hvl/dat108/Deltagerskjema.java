@@ -34,9 +34,6 @@ public class Deltagerskjema {
 		this.kjonn = request.getParameter("kjonn");
 	}
 
-	public Person nyPersonMedHash() {
-		return null;
-	}
 	
 	public Person nyPerson() {
 		Hashing hashing = new Hashing("SHA-256");
@@ -105,7 +102,7 @@ public class Deltagerskjema {
 	}
 
 	public boolean validPassordRep() {
-		return passordRep.equals(passord);
+		return passordRep.equals(passord) && !passordRep.equals("");
 	}
 
 	public boolean validKjonn() {

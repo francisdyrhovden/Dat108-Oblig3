@@ -1,7 +1,6 @@
 package no.hvl.dat108;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -37,22 +36,21 @@ public class LogginnServlet extends HttpServlet {
 
 		String mobil = request.getParameter("mobil");
 		String passord = request.getParameter("passord");
-		Hashing hashing = new Hashing("SHA-256");
 
-		if (!personEAO.erPaameldtFraFor(mobil)) {
-			response.sendRedirect("LogginnServlet?invalidInput");
-		} else {
-			Person person = personEAO.getPerson(mobil);
-			try {
-				if (hashing.validatePasswordWithSalt(passord, person.getPassordsalt(), person.getPassordhash())) {
+		try {
+			if (!personEAO.erPaameldtFraFor(mobil)) {
+				response.sendRedirect("LogginnServlet?invalidInput");
+			} else {
+				Person person = personEAO.getPerson(mobil);
+				if (InnloggingUtil.validatePassword(passord, person)) {
 					InnloggingUtil.loggInn(request, person);
 					response.sendRedirect("DeltagerlisteServlet");
 				} else {
 					response.sendRedirect("LogginnServlet?invalidInput");
 				}
-			} catch (NoSuchAlgorithmException e) {
-				e.printStackTrace();
 			}
+		} catch (Exception e) {
+			response.sendRedirect("LogginnServlet");
 		}
 
 	}

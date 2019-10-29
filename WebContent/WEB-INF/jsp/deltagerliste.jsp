@@ -38,12 +38,8 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<p>
 	<form action="FerdigServlet" method="post">
-		<p>
-			<input type="submit" value="Logg ut" />
-		</p>
+		<p><input type="submit" value="Logg ut" /></p>
 	</form>
-	</p>
 </body>
 </html>
