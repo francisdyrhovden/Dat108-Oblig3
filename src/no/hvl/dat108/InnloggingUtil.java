@@ -9,7 +9,7 @@ public class InnloggingUtil {
 	
 	public static boolean erInnlogget(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
-		return session != null;
+		return session != null && session.getAttribute("innlogget") != null;
 	}
 	
 	public static boolean validatePassword(String password, Person person) {
@@ -31,6 +31,7 @@ public class InnloggingUtil {
         request.getSession().setAttribute("passordhash", person.getPassordhash());
         request.getSession().setAttribute("passordsalt", person.getPassordsalt());
         request.getSession().setAttribute("kjonn", person.getKjonn());
+        sesjon.setAttribute("innlogget", "ja");
 	}
 	
 	public static void loggUt(HttpServletRequest request) {

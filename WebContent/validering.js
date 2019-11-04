@@ -1,14 +1,4 @@
 "use strict"
-// Starte med stor bokstav, kan inneholde mellomrom og bindestrek, lengde 2 til
-// 20
-let fornavnReg = /^[A-ZÆØÅ]{1}[a-zæøå -]{1,19}$/;
-
-// Starte med stor bokstav, kan inneholde bindestrek, lengde 2 til 20
-let etternavnReg = /^[A-ZÆØÅ]{1}[a-zæøå-]{1,19}$/;
-
-// eksakt 8 siffer
-let mobilReg = /^[0-9]{8}$/;
-
 // Må inneholde bokstaver eller tall, lengde minimum 8
 let passordMiddelsReg = /^[A-ZÆØÅa-zæøå\d]{8,}$/;
 
@@ -30,7 +20,7 @@ passordRepInput.addEventListener("input", validerPassordRep);
 
 function validerFornavn() {
 	let fornavn = fornavnInput.value;
-	if (fornavnReg.test(fornavn)) {
+	if (fornavn.length >= 2 && fornavn.length <= 20) {
 		fornavnInput.setAttribute("style", "border-color: green");
 	} else if (fornavn === "") {
 		fornavnInput.setAttribute("style", "border-color: null")
@@ -40,7 +30,7 @@ function validerFornavn() {
 }
 function validerEtternavn() {
 	let etternavn = etternavnInput.value;
-	if (etternavnReg.test(etternavn)) {
+	if (etternavn.length >= 2 && etternavn.length <= 20) {
 		etternavnInput.setAttribute("style", "border-color: green");
 	} else if (etternavn === "") {
 		etternavnInput.setAttribute("style", "border-color: null")
@@ -50,7 +40,7 @@ function validerEtternavn() {
 }
 function validerMobil() {
 	let mobNr = mobilInput.value;
-	if (mobilReg.test(mobNr)) {
+	if (mobil.length === 8) {
 		mobilInput.setAttribute("style", "border-color: green");
 	} else if (mobNr === "") {
 		mobilInput.setAttribute("style", "border-color: null")
